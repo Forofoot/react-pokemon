@@ -1,10 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
+import Pokemons from './containers/Pokemons';
 
 function App() {
   return (
     <div className="App">
-      Test
+      <Pokemons/>
     </div>
   );
 }
