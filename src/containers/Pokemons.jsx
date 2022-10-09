@@ -4,9 +4,9 @@ import { useSearchParams } from 'react-router-dom'
 
 export default function Pokemons(){
     const [pokemons, setPokemons] = useState([])
-    const [filter, setFilter] = useState('')
     const [searchParams, setSearchParams] = useSearchParams()
-
+    const [pokemonsFiltered, setPokemonsFiltered] = useState([])
+    
 
     const fetchPokemons = async () =>{
         try{
@@ -19,35 +19,38 @@ export default function Pokemons(){
             });
             
             const pokemon = await res.json();
-
+            
             setPokemons(pokemon.results)
-
-            console.log(pokemon.results)
-
+            
+            if(!searchParams.get('search')){
+                setPokemonsFiltered(pokemon.results)
+            }else{
+                setPokemonsFiltered(pokemon.results.filter((pokemon)=> pokemon.name.toLowerCase().includes(searchParams.get('search').toLowerCase())))
+            }
+            
         }catch(error){
             console.log(error)
         }
     }
 
     const handleSearch = (e) =>{
-        e.preventDefault()
-        setFilter(e.target.value)
         setSearchParams({search: e.target.value})
+        setPokemonsFiltered(pokemons.filter((pokemon)=> pokemon.name.toLowerCase().includes(e.target.value.toLowerCase())))
     }
 
     useEffect(() =>{
-        fetchPokemons()        
+        fetchPokemons()
     }, [])
     return(
         <div>
             <form>
-                <input value={filter} onChange={(e) => handleSearch(e)}/>
+                <input value={searchParams.get('search') || ''} onChange={(e) => handleSearch(e)}/>
             </form>
             Liste de pokemons
 
             Notre liste de pokemon :  <br></br>
-            {pokemons.length ? (
-                <List pokemonList={pokemons}/>
+            {pokemonsFiltered.length ? (
+                <List pokemonList={pokemonsFiltered}/>
             ) : (
                 <div>
                     Pas de pokemon
