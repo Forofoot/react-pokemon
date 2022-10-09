@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import List from '../components/List'
 import { useSearchParams } from 'react-router-dom'
+import Loader from '../components/Loader'
 
 export default function Pokemons(){
     const [pokemons, setPokemons] = useState([])
     const [searchParams, setSearchParams] = useSearchParams()
     const [pokemonsFiltered, setPokemonsFiltered] = useState([])
-    
+    const [loader, setLoader] = useState(true)
 
     const fetchPokemons = async () =>{
         try{
@@ -24,8 +25,10 @@ export default function Pokemons(){
             
             if(!searchParams.get('search')){
                 setPokemonsFiltered(pokemon.results)
+                setLoader(false)
             }else{
                 setPokemonsFiltered(pokemon.results.filter((pokemon)=> pokemon.name.toLowerCase().includes(searchParams.get('search').toLowerCase())))
+                setLoader(false)
             }
             
         }catch(error){
@@ -49,14 +52,21 @@ export default function Pokemons(){
             Liste de pokemons
 
             Notre liste de pokemon :  <br></br>
-            {pokemonsFiltered.length ? (
-                <List pokemonList={pokemonsFiltered}/>
-            ) : (
-                <div>
-                    Pas de pokemon
-                </div>
-            )}
-            
+            <div>
+                {loader ? (
+                    <Loader/>
+                ) : (
+                <>
+                    {pokemonsFiltered.length ? (
+                        <List pokemonList={pokemonsFiltered}/>
+                    ) : (
+                        <div>
+                            Pas de pokemon
+                        </div>
+                    )}
+                </>
+                )}
+            </div>
         </div>
     )
 }
