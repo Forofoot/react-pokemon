@@ -11,7 +11,6 @@ export default function Pokemons(){
 
     const fetchPokemons = async () =>{
         try{
-            //POST form values
             const res = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151&offset=0', {
                 method: "GET",
                 headers: {

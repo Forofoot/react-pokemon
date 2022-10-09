@@ -7,12 +7,17 @@ import { BrowserRouter,Routes,
   Route,
   createBrowserRouter,
   RouterProvider, } from "react-router-dom";
+import Pokemon from './containers/Pokemon';
 
 
 const router = createBrowserRouter([
   {
     path:'/',
     element: <App/>,
+  },
+  {
+    path:'/pokemon/:slug',
+    element: <Pokemon/>
   }
 ])
 
