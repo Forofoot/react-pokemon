@@ -51,7 +51,7 @@ export default function Pokemons(){
             Liste de pokemons
 
             Notre liste de pokemon :  <br></br>
-            <div>
+            <div className='flex justify-center'>
                 {loader ? (
                     <Loader/>
                 ) : (

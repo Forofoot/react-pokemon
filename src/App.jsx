@@ -3,7 +3,7 @@ import Pokemons from './containers/Pokemons';
 
 function App() {
   return (
-    <div className="App">
+    <div className="py-5 px-2.5 md:py-10 md:px-5">
       <Pokemons/>
     </div>
   );
