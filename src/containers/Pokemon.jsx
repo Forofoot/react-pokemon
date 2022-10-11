@@ -1,4 +1,3 @@
-import slugify from "slugify"
 import { Link, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import Loader from "../components/Loader"
