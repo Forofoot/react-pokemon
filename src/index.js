@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter,Routes,
-  Route,
+import {
   createBrowserRouter,
   RouterProvider, } from "react-router-dom";
 import Pokemon from './containers/Pokemon';
+import Bookmark from './containers/Bookmark';
+import Type from './containers/Type';
 
 
 const router = createBrowserRouter([
@@ -18,6 +19,14 @@ const router = createBrowserRouter([
   {
     path:'/pokemon/:slug',
     element: <Pokemon/>
+  },
+  {
+    path:'/bookmark',
+    element: <Bookmark/>
+  },
+  {
+    path:'/type',
+    element: <Type/>
   }
 ])
 
