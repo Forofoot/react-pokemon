@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function Pokemons({pokemonList}){
 
     const [fav, setFav] = useState(JSON.parse(localStorage.getItem("pokemon")) || [])
+
     return(
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {pokemonList.map((elt, i)=>(
@@ -13,7 +14,7 @@ export default function Pokemons({pokemonList}){
                         <img className="w-full max-h-[200px]" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${elt.url.split('/').slice(-2, -1)}.svg`} alt={`${elt.name}`}/>
                         {elt.name} 
                     </Link>
-                    <Like id={elt.url.split('/').slice(-2, -1)} name={elt.name} isLiked={fav.some((like) => like.id === elt.url.split('/').slice(-2, -1).toString())} setFav={setFav}/>
+                    <Like id={elt.url.split('/').slice(-2, -1)} name={elt.name} url={elt.url} isLiked={fav.some((like) => like.id === elt.url.split('/').slice(-2, -1).toString())} setFav={setFav}/>
                 </div>
             ))}
         </div>

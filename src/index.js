@@ -9,25 +9,32 @@ import {
 import Pokemon from './containers/Pokemon';
 import Bookmark from './containers/Bookmark';
 import Type from './containers/Type';
+import Pokemons from './containers/Pokemons';
 
 
 const router = createBrowserRouter([
   {
-    path:'/',
     element: <App/>,
+    children: [
+    {
+      path:'/',
+      element: <Pokemons/>
+    },
+    {
+      path:'/pokemon/:slug',
+      element: <Pokemon/>
+    },
+    {
+      path:'/bookmark',
+      element: <Bookmark/>
+    },
+    {
+      path:'/type',
+      element: <Type/>
+    }
+    ]
   },
-  {
-    path:'/pokemon/:slug',
-    element: <Pokemon/>
-  },
-  {
-    path:'/bookmark',
-    element: <Bookmark/>
-  },
-  {
-    path:'/type',
-    element: <Type/>
-  }
+  
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

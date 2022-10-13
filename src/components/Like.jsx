@@ -1,15 +1,13 @@
 import { useEffect } from "react";
 
-export default function Like({id,name,isLiked, setFav}){
+export default function Like({id, name, url, isLiked, setFav}){
 
-    useEffect(() => {
-    }, []);
-
-    const handleFavorite = (arg, arg2) =>{
+    const handleFavorite = (arg, arg2, url) =>{
 
         const data = {
             'id'   : arg2.toString(),
-            'name' : arg
+            'name' : arg,
+            'url'  : url
         }
         let stock = JSON.parse(localStorage.getItem('pokemon')) || []
 
@@ -38,6 +36,6 @@ export default function Like({id,name,isLiked, setFav}){
     }
 
     return(
-        <p className="cursor-pointer" onClick={() => handleFavorite(name, id)}>{isLiked ? 'Retirer des favoris' : 'Ajouter en favoris'}</p>
+        <p className="cursor-pointer" onClick={() => handleFavorite(name, id, url)}>{isLiked ? 'Retirer des favoris' : 'Ajouter en favoris'}</p>
     )
 }
