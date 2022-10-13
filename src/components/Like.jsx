@@ -1,5 +1,3 @@
-import { useEffect } from "react";
-
 export default function Like({id, name, url, isLiked, setFav}){
 
     const handleFavorite = (arg, arg2, url) =>{

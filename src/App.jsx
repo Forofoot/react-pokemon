@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 function App() {
   return (
     <>
-    <header>
+    <header className='px-10 py-5'>
       <nav>
-        <ul>
+        <ul className='flex gap-4'>
           <li><Link to='/'>Accueil</Link></li>
           <li><Link to='/type'>Type</Link></li>
           <li><Link to='/bookmark'>Favoris</Link></li>

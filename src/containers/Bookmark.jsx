@@ -2,7 +2,6 @@ import { useState } from "react"
 import Like from "../components/Like"
 
 export default function Bookmark(){
-    const [favList, setFavList] = useState(JSON.parse(localStorage.getItem('pokemon')))
     const [fav, setFav] = useState(JSON.parse(localStorage.getItem("pokemon")) || [])
 
     return(

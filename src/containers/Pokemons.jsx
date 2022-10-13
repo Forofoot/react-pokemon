@@ -8,6 +8,7 @@ export default function Pokemons(){
     const [searchParams, setSearchParams] = useSearchParams()
     const [pokemonsFiltered, setPokemonsFiltered] = useState([])
     const [loader, setLoader] = useState(true)
+    const [fav, setFav] = useState(JSON.parse(localStorage.getItem("pokemon")) || [])
 
     const fetchPokemons = async () =>{
         try{
@@ -45,19 +46,16 @@ export default function Pokemons(){
     }, [])
     return(
         <div>
-            <form>
-                <input value={searchParams.get('search') || ''} onChange={(e) => handleSearch(e)}/>
+            <form className='text-center mb-5'>
+                <input className='w-full shadow-lg border-0 rounded p-5' placeholder='Chercher un pokemon' value={searchParams.get('search') || ''} onChange={(e) => handleSearch(e)}/>
             </form>
-            Liste de pokemons
-
-            Notre liste de pokemon :  <br></br>
             <div className='flex justify-center'>
                 {loader ? (
                     <Loader/>
                 ) : (
                 <>
                     {pokemonsFiltered.length ? (
-                        <List pokemonList={pokemonsFiltered}/>
+                        <List pokemonList={pokemonsFiltered} fav={fav} setFav={setFav}/>
                     ) : (
                         <div>
                             Pas de pokemon

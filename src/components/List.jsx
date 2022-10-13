@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import Like from "./Like";
-import { useState } from "react";
 
-export default function Pokemons({pokemonList}){
-
-    const [fav, setFav] = useState(JSON.parse(localStorage.getItem("pokemon")) || [])
+export default function Pokemons({pokemonList, fav, setFav}){
 
     return(
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
