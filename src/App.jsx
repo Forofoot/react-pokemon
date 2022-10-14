@@ -6,15 +6,19 @@ import { Link } from 'react-router-dom';
 function App() {
   return (
     <>
-    <header className='px-10 py-5'>
-      <nav>
+    <header className='px-10 py-5 bg-blue text-white'>
+      <nav className='flex justify-between'>
+        <h1 className='flex gap-3 items-center'><img src='/logo/pokeball.svg' height={35} width={35} alt='logo'/> Pokédéx React</h1>
         <ul className='flex gap-4'>
-          <li><Link to='/'>Accueil</Link></li>
-          <li><Link to='/type'>Type</Link></li>
+          <li><Link to='/'>Pokémons</Link></li>
+          <li><Link to='/type'>Types</Link></li>
           <li><Link to='/bookmark'>Favoris</Link></li>
         </ul>
       </nav>
     </header>
+    <div className='w-full mb-20'>
+      <img src='/banner/banner.png' alt='banner' className='object-cover'/>
+    </div>
     <div className="py-5 px-2.5 md:py-10 md:px-5">
       <Outlet/>
     </div>
