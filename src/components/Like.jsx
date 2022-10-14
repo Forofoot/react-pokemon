@@ -34,6 +34,6 @@ export default function Like({id, name, url, isLiked, setFav}){
     }
 
     return(
-        <p className="cursor-pointer" onClick={() => handleFavorite(name, id, url)}>{isLiked ? 'Retirer des favoris' : 'Ajouter en favoris'}</p>
+        <img className="cursor-pointer absolute top-1/2 -translate-y-1/2 right-5" src={`/tools/${isLiked ? 'Star_active.svg' : 'Star.svg'}`} height={21} width={21} onClick={() => handleFavorite(name, id, url)}/>
     )
 }

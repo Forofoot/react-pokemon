@@ -45,9 +45,9 @@ export default function Pokemons(){
         fetchPokemons()
     }, [])
     return(
-        <div>
-            <form className='text-center mb-5'>
-                <input className='w-full shadow-lg border-0 rounded p-5' placeholder='Chercher un pokemon' value={searchParams.get('search') || ''} onChange={(e) => handleSearch(e)}/>
+        <div className='w-full'>
+            <form className='text-center mb-5 w-full'>
+                <input className='w-full shadow-lg border-0 rounded-[50px] p-5 pl-14' placeholder='Chercher un pokemon' value={searchParams.get('search') || ''} onChange={(e) => handleSearch(e)}/>
             </form>
             <div className='flex justify-center'>
                 {loader ? (

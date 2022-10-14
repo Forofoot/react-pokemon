@@ -1,6 +1,7 @@
 import { Link, useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import Loader from "../components/Loader"
+import PokemonDetails from "../components/PokemonDetails"
 export default function Pokemon(){
     const [pokemon, setPokemon] = useState([])
     const { slug } = useParams()
@@ -30,15 +31,14 @@ export default function Pokemon(){
     }, [])
 
     return(
-        <div>
+        <div className="w-full">
+            <img src='/banner/pokemon_banner.png' alt='Bannière logo pokemon' className="h-[87px] mb-20 mx-auto"/>
             {loader ? (
                 <Loader/>
             ) : (
             <>
                 {pokemon.name ? (
-                    <div>
-                        {pokemon.name}
-                    </div>
+                    <PokemonDetails pokemon={pokemon} />
                 ) : (
                     <div>
                         Pas de pokemon
