@@ -17,7 +17,7 @@ function App() {
       </nav>
     </header>
     <div className='w-full mb-20'>
-      <img src='/banner/banner.png' alt='banner' className='object-cover'/>
+      <img src='/banner/banner.png' alt='banner' className='object-cover w-full'/>
     </div>
     <div className="py-5 px-2.5 lg:py-0 lg:px-0 md:max-w-[1023px] m-auto flex justify-center">
       <Outlet/>
