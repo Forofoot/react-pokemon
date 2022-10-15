@@ -55,7 +55,11 @@ export default function Pokemons(){
                 ) : (
                 <>
                     {pokemonsFiltered.length ? (
-                        <List pokemonList={pokemonsFiltered} fav={fav} setFav={setFav}/>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
+                            {pokemonsFiltered.map((elt, i) => (
+                                <List key={i} pokemonList={elt} fav={fav} setFav={setFav}/>
+                            ))}
+                        </div>
                     ) : (
                         <div>
                             Pas de pokemon

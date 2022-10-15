@@ -23,7 +23,7 @@ export default function PokemonDetails({pokemon}){
                             <h3 className="text-blue font-bold mb-5">Types</h3>
                             <div className="flex gap-5">
                                 {pokemon.types.slice(0, 3).map((elt, i) => (
-                                    <p key={i} className={`capitalize text-white px-5 py-1 bg-${elt.type.name} rounded-[20px]`}>{elt.type.name}</p>
+                                    <p key={i} className={`capitalize text-white px-5 py-1 bg-${elt.type.name} rounded-[20px] text-center`}>{elt.type.name}</p>
                                 ))}
                             </div>
                         </div>

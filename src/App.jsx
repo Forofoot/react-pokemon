@@ -1,6 +1,5 @@
 import { Outlet } from 'react-router-dom';
 import './App.css';
-import Pokemons from './containers/Pokemons';
 import { Link } from 'react-router-dom';
 
 function App() {

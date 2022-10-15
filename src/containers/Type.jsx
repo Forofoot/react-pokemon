@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
+import List from "../components/List"
 
 export default function Type(){ 
     const [types, setTypes] = useState([])
+    const [currentFilter, setCurrentFilter] = useState('normal')
     const [typePokemons, setTypePokemons] = useState([])
     const [loader, setLoader] = useState(true)
+    const [fav, setFav] = useState(JSON.parse(localStorage.getItem("pokemon")) || [])
 
     const fetchType = async () =>{
         try{
@@ -19,15 +22,6 @@ export default function Type(){
             
             setTypes(type.results)
             
-
-            {/*if(!searchParams.get('search')){
-                setPokemonsFiltered(pokemon.results)
-                setLoader(false)
-            }else{
-                setPokemonsFiltered(pokemon.results.filter((pokemon)=> pokemon.name.toLowerCase().includes(searchParams.get('search').toLowerCase())))
-                setLoader(false)
-            }*/}
-            
         }catch(error){
             console.log(error)
         }
@@ -36,7 +30,7 @@ export default function Type(){
     const fetchFilteredPokemons = async (typeId) =>{
         try{
             if(typePokemons.length){
-                const res = await fetch(`https://pokeapi.co/api/v2/type/${typeId}`, {
+                const res = await fetch(`https://pokeapi.co/api/v2/type/${typeId}?limit=151&offset=0`, {
                     method: "GET",
                     headers: {
                         'Content-Type': 'application/json',
@@ -44,14 +38,14 @@ export default function Type(){
                 });
                 
                 const pokemon = await res.json();
-            
+
                 setTypePokemons(pokemon.pokemon)
                 
                 if(res.ok){
                     setLoader(false)
                 }
             }else{
-                const res = await fetch(`https://pokeapi.co/api/v2/type/1/`, {
+                const res = await fetch(`https://pokeapi.co/api/v2/type/1/?limit=151&offset=0`, {
                     method: "GET",
                     headers: {
                         'Content-Type': 'application/json',
@@ -72,8 +66,9 @@ export default function Type(){
         }
     }
 
-    const handleFetchTypedPokemon = (typeId) => {
+    const handleFetchTypedPokemon = (typeId, name) => {
         setLoader(true)
+        setCurrentFilter(name)
         fetchFilteredPokemons(typeId)
     }
 
@@ -84,8 +79,8 @@ export default function Type(){
     return(
         <div>
             <div className="flex flex-wrap justify-center gap-5 mb-5">
-                {types.map((elt, i)=>(
-                    <p className="cursor-pointer w-1/12 bg-slate-300 p-2 text-center rounded-3xl" key={i} onClick={() => handleFetchTypedPokemon(elt.url.split('/').slice(-2,-1).toString())}>{elt.name}</p>
+                {types.slice(0, 18).map((elt, i)=>(
+                    <p className={`capitalize text-white px-5 py-1 bg-${elt.name} rounded-[20px] cursor-pointer text-center ${elt.name === currentFilter ? 'border-2 border-blue' : '' }`} key={i} onClick={() => handleFetchTypedPokemon(elt.url.split('/').slice(-2,-1).toString(), elt.name)}>{elt.name}</p>
                 ))}
             </div>
             
@@ -94,11 +89,11 @@ export default function Type(){
             ) : (
             <>
                 {typePokemons.length ? (
-                    <div>
-                        {typePokemons.map((elt, i) => (
-                            <p key={i}>{elt.pokemon.name}</p>
-                        ))}
-                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">
+                    {typePokemons.map((elt, i) => (
+                        <List key={i} pokemonList={elt.pokemon} fav={fav} setFav={setFav}/>
+                    ))}
+                </div>
                 ) : (
                     <div>
                         Veuillez filtrer par type
