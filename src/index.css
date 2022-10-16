@@ -15,6 +15,12 @@ code {
     monospace;
 }
 
+@media (max-width: 768px) {
+  .ReactModal__Content{
+    width: 90%;
+  }
+}
+
 .bg-normal{
   background-color: #A8A77A;
 }
