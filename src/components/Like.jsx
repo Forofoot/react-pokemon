@@ -30,7 +30,7 @@ export default function Like({id, name, url, isLiked, setFav}){
                 stock.splice(index, 1)
                 localStorage.setItem('pokemon', JSON.stringify(stock))
                 setFav(JSON.parse(localStorage.getItem("pokemon")))
-                toast.success('Pokémon enlevé des favoris')
+                toast.success('Pokémon enlevé des favoris', {icon: '☑️'})
             }
         }
     }
