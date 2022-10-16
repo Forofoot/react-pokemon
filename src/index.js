@@ -10,6 +10,7 @@ import Pokemon from './containers/Pokemon';
 import Bookmark from './containers/Bookmark';
 import Type from './containers/Type';
 import Pokemons from './containers/Pokemons';
+import Page404 from './containers/Page404';
 
 
 const router = createBrowserRouter([
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
     {
       path:'/type',
       element: <Type/>
+    },
+    {
+      path:'/*',
+      element: <Page404/>
     }
     ]
   },

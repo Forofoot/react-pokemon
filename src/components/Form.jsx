@@ -22,16 +22,16 @@ export default function Form({closeModal}){
             <form ref={form} onSubmit={sendEmail} className="bg-white pt-6 mb-4 md:min-w-[500px]">
                 <div className="mb-4">
                     <label className="block text-secondaryText text-sm font-bold mb-2" htmlFor="user_name">
-                        Username
+                        Nom d'utilisateur
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-secondaryText leading-tight focus:outline-none focus:shadow-outline" id="user_name" name="user_name" type="text" placeholder="Username"/>
+                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-secondaryText leading-tight focus:outline-none focus:shadow-outline" id="user_name" name="user_name" type="text" placeholder="Nom d'utilisateur"/>
                 </div>
 
                 <div className="mb-6">
                     <label className="block text-secondaryText text-sm font-bold mb-2" htmlFor="subject">
-                        Subject
+                        Objet
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-secondaryText mb-3 leading-tight focus:outline-none focus:shadow-outline" id="subject" type="text" name="subject" placeholder="Subject"/>
+                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-secondaryText mb-3 leading-tight focus:outline-none focus:shadow-outline" id="subject" type="text" name="subject" placeholder="Objet"/>
                 </div>
 
                 <div className="mb-6">
@@ -50,7 +50,7 @@ export default function Form({closeModal}){
 
                 <div className="flex items-center justify-center">
                     <button className="bg-blue text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
-                        Send
+                        Envoyer
                     </button>
                 </div>
             </form>

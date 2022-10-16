@@ -44,10 +44,10 @@ export default function Pokemon(){
                 {pokemon.name ? (
                     <PokemonDetails pokemon={pokemon} />
                 ) : (
-                    <div>
-                        Pas de pokemon
-                        <Link to='/'>
-                            Retour à l'accueil
+                    <div className="flex flex-col items-center gap-5">
+                        <h2 className="text-3xl">Aucun pokémon trouvé</h2>
+                        <Link to='/' className="text-white font-mono text-xl bg-blue p-3 rounded-md hover:shadow-md">
+                            Retourner à l'accueil
                         </Link>
                     </div>
                 )}
