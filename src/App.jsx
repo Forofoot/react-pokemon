@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import './App.css';
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
 
   return (
     <>
+    <Toaster/>
     <header className='px-10 py-5 bg-blue text-white'>
       <nav className='flex justify-between'>
         <h1 className='flex gap-3 items-center font-bubble text-xl'><img src='/logo/pokeball.svg' height={35} width={35} alt='logo'/> Pokédéx React</h1>

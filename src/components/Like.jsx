@@ -1,7 +1,9 @@
+import toast from "react-hot-toast"
+
 export default function Like({id, name, url, isLiked, setFav}){
 
     const handleFavorite = (arg, arg2, url) =>{
-
+        toast.remove()
         const data = {
             'id'   : arg2.toString(),
             'name' : arg,
@@ -13,6 +15,7 @@ export default function Like({id, name, url, isLiked, setFav}){
             stock.push(data)
             localStorage.setItem('pokemon', JSON.stringify(stock))
             setFav(JSON.parse(localStorage.getItem("pokemon")))
+            toast.success('Pokemon added to bookmark')
         } else {
             let found = stock.find(elt => {
                 return elt.id === arg2.toString()
@@ -21,11 +24,13 @@ export default function Like({id, name, url, isLiked, setFav}){
                 stock.push(data)
                 localStorage.setItem('pokemon', JSON.stringify(stock))
                 setFav(JSON.parse(localStorage.getItem("pokemon")))
+                toast.success('Pokemon added to bookmark')
             }else{
                 let index = stock.map(poke => poke.id).indexOf(arg2.toString())
                 stock.splice(index, 1)
                 localStorage.setItem('pokemon', JSON.stringify(stock))
                 setFav(JSON.parse(localStorage.getItem("pokemon")))
+                toast.success('Pokemon removed from bookmark')
             }
         }
     }
