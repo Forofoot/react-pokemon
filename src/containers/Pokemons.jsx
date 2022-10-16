@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import List from '../components/List'
 import { useSearchParams } from 'react-router-dom'
 import Loader from '../components/Loader'
+import { Helmet } from 'react-helmet'
 
 export default function Pokemons(){
     const [pokemons, setPokemons] = useState([])
@@ -32,7 +33,8 @@ export default function Pokemons(){
             }
             
         }catch(error){
-            console.log(error)
+            setLoader(false)
+            throw error
         }
     }
 
@@ -46,6 +48,9 @@ export default function Pokemons(){
     }, [])
     return(
         <div className='w-full'>
+            <Helmet>
+                <title>Pokédex React</title>
+            </Helmet>
             <form className='text-center mb-5 w-full'>
                 <input className='w-full shadow-lg border-0 rounded-[50px] p-5 pl-14' placeholder='Chercher un pokemon' value={searchParams.get('search') || ''} onChange={(e) => handleSearch(e)}/>
             </form>

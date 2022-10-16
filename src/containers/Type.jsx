@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import List from "../components/List"
+import { Helmet } from "react-helmet";
 
 export default function Type(){ 
     const [types, setTypes] = useState([])
@@ -23,7 +24,8 @@ export default function Type(){
             setTypes(type.results)
             
         }catch(error){
-            console.log(error)
+            setLoader(false)
+            throw error
         }
     }
 
@@ -62,7 +64,8 @@ export default function Type(){
             }
 
         }catch(error){
-            console.log(error)
+            setLoader(false)
+            throw error
         }
     }
 
@@ -78,6 +81,9 @@ export default function Type(){
     }, []);
     return(
         <div>
+            <Helmet>
+                <title>Types</title>
+            </Helmet>
             <div className="flex flex-wrap justify-center gap-5 mb-5">
                 {types.slice(0, 18).map((elt, i)=>(
                     <p className={`capitalize text-white px-5 py-1 bg-${elt.name} rounded-[20px] cursor-pointer text-center ${elt.name === currentFilter ? 'border-2 border-blue' : '' }`} key={i} onClick={() => handleFetchTypedPokemon(elt.url.split('/').slice(-2,-1).toString(), elt.name)}>{elt.name}</p>

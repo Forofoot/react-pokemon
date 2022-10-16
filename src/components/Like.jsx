@@ -28,9 +28,6 @@ export default function Like({id, name, url, isLiked, setFav}){
                 setFav(JSON.parse(localStorage.getItem("pokemon")))
             }
         }
-        
-        console.log(stock)
-        console.log(JSON.parse(localStorage.getItem('pokemon')))
     }
 
     return(

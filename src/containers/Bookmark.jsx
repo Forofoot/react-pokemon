@@ -1,12 +1,16 @@
 import { useState } from "react"
 import Like from "../components/Like"
 import { Link } from "react-router-dom"
+import { Helmet } from "react-helmet"
 
 export default function Bookmark(){
     const [fav, setFav] = useState(JSON.parse(localStorage.getItem("pokemon")) || [])
-
+    
     return(
         <>
+        <Helmet>
+            <title>Bookmark</title>
+        </Helmet>
         {JSON.parse(localStorage.getItem('pokemon')).length ? (
             <>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 w-full">

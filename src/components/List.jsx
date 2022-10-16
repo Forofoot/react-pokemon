@@ -8,7 +8,7 @@ export default function Pokemons({pokemonList, fav, setFav}){
                 {pokemonList.url.split('/').slice(-2,-1).toString() <= 151 &&
                     <div className="shadow-lg w-full hover:bg-blueLight ease-in duration-150 p-5 bg-white rounded-[20px] relative">
                         <Link to={`/pokemon/${pokemonList.name}`} className="flex max-h-[83px] items-center justify-between h-full">
-                            <span>#{pokemonList.url.split('/').slice(-2, -1)}</span>
+                            <span className="font-semibold text-secondaryText">#{pokemonList.url.split('/').slice(-2, -1)}</span>
                             <div className="h-full">
                                 <img className="h-full" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemonList.url.split('/').slice(-2, -1)}.svg`} alt={`${pokemonList.name}`}/>
                             </div>

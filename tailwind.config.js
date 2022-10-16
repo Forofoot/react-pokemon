@@ -34,6 +34,10 @@ module.exports = {
         'fairy': '#D685AD',
       },
     },
+    fontFamily: {
+      'bubble': ['Bubblegum Sans'],
+      'quickSand': ['Quicksand']
+    }
   },
   plugins: [],
 }

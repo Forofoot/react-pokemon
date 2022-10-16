@@ -5,9 +5,9 @@ export default function PokemonDetails({pokemon}){
         <>
             <div className="w-full shadow-lg rounded-[20px] mb-14 flex bg-white">
                 <div className="w-5/12 bg-blueLight rounded-[20px] md:p-10 gap-6 flex flex-col justify-center items-center">                
-                    <span>#{pokemon.species.url.split('/').slice(-2, -1)}</span>
+                    <span className="font-semibold text-secondaryText text-3xl">#{pokemon.species.url.split('/').slice(-2, -1)}</span>
                     <img className="h-full" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.species.url.split('/').slice(-2, -1)}.svg`} alt={`${pokemon.name}`}/>
-                    <span>{pokemon.name}</span>
+                    <span className="font-bubble capitalize text-3xl">{pokemon.name}</span>
                 </div>
                 <div className="md:p-10 bg-white w-7/12 rounded-r-[20px] flex flex-col gap-10">
                     <div className="flex justify-between">
