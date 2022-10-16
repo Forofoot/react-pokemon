@@ -8,6 +8,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  background: #F6F8FC;
+  padding-bottom: 35px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body::-webkit-scrollbar{
+  display: none;
+}
+
+input{
+  border: 1px solid #000;
+  outline: none;
 }
 
 code {

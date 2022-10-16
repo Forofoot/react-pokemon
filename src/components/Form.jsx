@@ -1,5 +1,6 @@
 import emailjs from "@emailjs/browser"
 import { useRef } from "react";
+import { toast } from "react-hot-toast";
 
 export default function Form({setIsOpen, closeModal}){
     const form = useRef()
@@ -8,9 +9,10 @@ export default function Form({setIsOpen, closeModal}){
     
         emailjs.sendForm('service_iuxe5g9', 'template_j61e4zm', form.current, 'QrsPbUCc-pkDIITlb')
           .then((result) => {
-              console.log(result.text);
+            toast.success('Message envoyé à Erwan')
           }, (error) => {
-              console.log(error.text);
+            toast.error('Erreur lors de l\'envoi du message')
+            throw error
           });
           e.target.reset()
       };
