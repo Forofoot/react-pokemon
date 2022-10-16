@@ -2,7 +2,7 @@ import emailjs from "@emailjs/browser"
 import { useRef } from "react";
 import { toast } from "react-hot-toast";
 
-export default function Form({setIsOpen, closeModal}){
+export default function Form({closeModal}){
     const form = useRef()
     const sendEmail = (e) => {
         e.preventDefault();
