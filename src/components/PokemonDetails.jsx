@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 export default function PokemonDetails({pokemon}){
     return(
         <>
-            <div className="w-full shadow-lg rounded-[20px] mb-14 flex bg-white">
-                <div className="w-5/12 bg-blueLight rounded-[20px] md:p-10 gap-6 flex flex-col justify-center items-center">                
+            <div className="w-full shadow-lg rounded-[20px] mb-14 flex flex-col lg:flex-row bg-white">
+                <div className="w-full rounded-t-[20px] lg:w-5/12 bg-blueLight lg:rounded-[20px] md:p-10 gap-6 flex flex-col justify-center items-center">                
                     <span className="font-semibold text-secondaryText text-3xl">#{pokemon.species.url.split('/').slice(-2, -1)}</span>
                     <img className="h-full" src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${pokemon.species.url.split('/').slice(-2, -1)}.svg`} alt={`${pokemon.name}`}/>
                     <span className="font-bubble capitalize text-3xl">{pokemon.name}</span>
                 </div>
-                <div className="md:p-10 bg-white w-7/12 rounded-r-[20px] flex flex-col gap-10">
-                    <div className="flex justify-between">
+                <div className="p-5 md:p-10 bg-white rounded-b-[20px] lg:w-7/12 lg:rounded-r-[20px] flex flex-col gap-10">
+                    <div className="flex justify-between gap-5">
                         <div>
                             <h3 className="text-blue font-bold mb-5">Taille</h3>
                             <p className="text-secondaryText">{pokemon.height / 10} m</p>
@@ -21,7 +21,7 @@ export default function PokemonDetails({pokemon}){
                         </div>
                         <div>
                             <h3 className="text-blue font-bold mb-5">Types</h3>
-                            <div className="flex gap-5">
+                            <div className="flex flex-wrap gap-5">
                                 {pokemon.types.slice(0, 3).map((elt, i) => (
                                     <p key={i} className={`capitalize text-white px-5 py-1 bg-${elt.type.name} rounded-[20px] text-center`}>{elt.type.name}</p>
                                 ))}
